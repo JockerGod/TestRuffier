@@ -1,6 +1,6 @@
 # напиши здесь код для второго экрана приложения
 from instr import *
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QTime, QTimer
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QVBoxLayout, QHBoxLayout, QLineEdit
 
 #Создание окна
@@ -47,7 +47,7 @@ class SecondWin(QWidget):
                 'font-size: 15px'
         )
 
-        self.text_time = QLabel(txt_timer)
+        self.text_time = QLabel("0:0:15")
         self.text_time.setStyleSheet(
                 'color: white;'
                 'font-size: 30px'
@@ -135,18 +135,78 @@ class SecondWin(QWidget):
         self.Main_line = QHBoxLayout()
         self.Main_line.addLayout(self.L1)
         self.Main_line.addLayout(self.L2)
+        self.setLayout(self.Main_line)
 
+
+    def time_start(self):
+            global time
+            time = QTime(0, 0, 15)
+            self.timer = QTimer()
+            self.timer.timeout.connect(self.time1Event)
+            self.timer.start(1000)
+        
+
+    def time1Event(self):
+            global time
+            time = time.addSecs(-1)
+            self.text_time.setText(time.toString("hh:mm:ss"))
+            if time.toString("hh:mm:ss") == "00:00:00":
+                self.timer.stop()
+
+    def time_contin(self):
+            global time
+            time = QTime(0, 0, 30)
+            self.timer = QTimer()
+            self.timer.timeout.connect(self.time2Event)
+            self.timer.start(1000)
+
+    def time2Event(self):
+            global time
+            time = time.addSecs(-1)
+            self.text_time.setText(time.toString("hh:mm:ss")[6:8])
+            if time.toString("hh:mm:ss") == "00:00:00":
+                self.timer.stop()
+
+    def time_final(self):
+            global time
+            time = QTime(0, 1, 0)
+            self.timer = QTimer()
+            self.timer.timeout.connect(self.time3Event)
+            self.timer.start(1500)
+
+    def time3Event(self):
+            global time
+            time = time.addSecs(-1)
+            self.text_time.setText(time.toString("hh:mm:ss")[6:8])
+            if int(time.toString("hh:mm:ss")[6:8]) >= 45:
+                    self.text_time.setStyleSheet(
+                            'color: #2aeb2a;'
+                            'font-size: 45px'
+                            )
+            elif int(time.toString("hh:mm:ss")[6:8]) <= 15:
+                    self.text_time.setStyleSheet(
+                            'color: #2aeb2a;'
+                            'font-size: 45px'
+                            )
+            else:
+                    self.text_time.setStyleSheet(
+                            'color: white;'
+                            'font-size: 45px'
+                            )
 
 
 
 #
     def connect(self):
-        pass
+        self.btn1.clicked.connect(self.time_start)
+        self.btn2.clicked.connect(self.time_contin)
+        self.btn3.clicked.connect(self.time_final)
+        self.btn4.clicked.connect(self.next_win)
+
 #
     def next_win(self):
         self.hide()
 
 app = QApplication([])
 Main_win = SecondWin()
-Main_win.setLayout(Main_win.Main_line)
 app.exec_()
