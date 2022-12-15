@@ -14,18 +14,31 @@ class MainWin(QWidget):
 
     def set_appear(self):
         self.setWindowTitle(txt_title)
-        self.resize(win_height, win_width)
+        self.resize(win_width, win_height)
         self.move(win_x, win_y)
+        self.setStyleSheet('background-color: #190c29;')
 
     def initUI(self):
         self.hello_text = QLabel(text = txt_hello)
+        self.hello_text.setStyleSheet(
+            "color: #17e817;"
+            "font-size: 25px;"
+        )
         self.instruction = QLabel(text = txt_instruction)
+        self.instruction.setStyleSheet(
+            "color: white;"
+            "font-size: 15px;"
+        )
         self.button = QPushButton(text = txt_next)
+        self.button.setStyleSheet(
+            "color: #ffd500;"
+            "font-size: 15px;"
+        )
         
         self.layout = QVBoxLayout()
-        self.layout.addWidget(self.hello_text)
-        self.layout.addWidget(self.instruction)
-        self.layout.addWidget(self.button)
+        self.layout.addWidget(self.hello_text, alignment = Qt.AlignCenter)
+        self.layout.addWidget(self.instruction, alignment = Qt.AlignCenter)
+        self.layout.addWidget(self.button, alignment = Qt.AlignCenter)
         self.setLayout(self.layout)
 
     def connects(self):

@@ -47,7 +47,7 @@ class SecondWin(QWidget):
                 'font-size: 15px'
         )
 
-        self.text_time = QLabel("0:0:15")
+        self.text_time = QLabel("00:00:15")
         self.text_time.setStyleSheet(
                 'color: white;'
                 'font-size: 30px'
@@ -151,6 +151,10 @@ class SecondWin(QWidget):
             time = time.addSecs(-1)
             self.text_time.setText(time.toString("hh:mm:ss"))
             if time.toString("hh:mm:ss") == "00:00:00":
+                self.text_time.setStyleSheet(
+                        "color: red;"
+                        'font-size: 30px'
+                        )
                 self.timer.stop()
 
     def time_contin(self):
