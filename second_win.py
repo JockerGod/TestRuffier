@@ -3,6 +3,16 @@ from instr import *
 from PyQt5.QtCore import Qt, QTime, QTimer
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QVBoxLayout, QHBoxLayout, QLineEdit
 
+
+class Export(self):
+        def __init__(self, age, t1, t2, t3):
+                super().__init__()
+                self.age = age
+                self.t1 = t1
+                self.t2 = t2
+                self.t3 = t3
+
+
 #Создание окна
 class SecondWin(QWidget):
     def __init__(self):
@@ -210,3 +220,4 @@ class SecondWin(QWidget):
 #
     def next_win(self):
         self.hide()
+        self.tw = FinalWin(Export(self.line2, self.line3, self.line4, self.line5))
