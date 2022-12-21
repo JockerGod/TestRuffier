@@ -210,7 +210,3 @@ class SecondWin(QWidget):
 #
     def next_win(self):
         self.hide()
-
-app = QApplication([])
-Main_win = SecondWin()
-app.exec_()
