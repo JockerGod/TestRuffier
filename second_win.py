@@ -1,16 +1,17 @@
 # напиши здесь код для второго экрана приложения
 from instr import *
+from final_win import *
 from PyQt5.QtCore import Qt, QTime, QTimer
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QVBoxLayout, QHBoxLayout, QLineEdit
 
 
-class Export(self):
-        def __init__(self, age, t1, t2, t3):
-                super().__init__()
-                self.age = age
-                self.t1 = t1
-                self.t2 = t2
-                self.t3 = t3
+class Export(QWidget):
+    def __init__(self, age, t1, t2, t3):
+            super().__init__()
+            self.age = age
+            self.t1 = t1
+            self.t2 = t2
+            self.t3 = t3
 
 
 #Создание окна
