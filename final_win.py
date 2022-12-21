@@ -27,9 +27,27 @@ class FinalWin(QWidget):
             elif self.index <= 0.4:
                 self.result = txt_res5
         elif exp.age <= 14 and >= 13:
-            pass
+            if self.index >= 16.5:
+                self.result = txt_res1
+            elif self.index <=16.4 and >=12.5:
+                self.result = txt_res2
+            elif self.index <=12.4 and >=7.5:
+                self.result = txt_res3
+            elif self.index <=7.4 and >=2:
+                self.result = txt_res4
+            elif self.index <= 1.9:
+                self.result = txt_res5
         elif exp.age <= 12 and >= 11:
-            pass
+            if self.index >= 18:
+                self.result = txt_res1
+            elif self.index <=17.9 and >=14:
+                self.result = txt_res2
+            elif self.index <=13.9 and >=9:
+                self.result = txt_res3
+            elif self.index <=8.9 and >=3.5:
+                self.result = txt_res4
+            elif self.index <= 3.4:
+                self.result = txt_res5
         elif exp.age <= 10 and >= 9:
             pass
         elif exp.age <= 8 and >= 7:
