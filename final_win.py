@@ -11,7 +11,7 @@ class FinalWin(QWidget):
         self.initUI()
         self.show()
 
-# 
+# Подсчёт индекса и результата
     def result(self, exp):
         self.index = (4*(int(exp.t1) + int(exp.t1) + int(exp.t1))-200)/10
 
@@ -27,9 +27,27 @@ class FinalWin(QWidget):
             elif self.index <= 0.4:
                 self.result = txt_res5
         elif exp.age <= 14 and >= 13:
-            pass
+            if self.index >= 16.5:
+                self.result = txt_res1
+            elif self.index <=16.4 and >=12.5:
+                self.result = txt_res2
+            elif self.index <=12.4 and >=7.5:
+                self.result = txt_res3
+            elif self.index <=7.4 and >=2:
+                self.result = txt_res4
+            elif self.index <= 1.9:
+                self.result = txt_res5
         elif exp.age <= 12 and >= 11:
-            pass
+            if self.index >= 18:
+                self.result = txt_res1
+            elif self.index <=17.9 and >=14:
+                self.result = txt_res2
+            elif self.index <=13.9 and >=9:
+                self.result = txt_res3
+            elif self.index <=8.9 and >=3.5:
+                self.result = txt_res4
+            elif self.index <= 3.4:
+                self.result = txt_res5
         elif exp.age <= 10 and >= 9:
             if self.index >= 19.5:
                 self.result = txt_res1
@@ -53,13 +71,17 @@ class FinalWin(QWidget):
             elif self.index <= 6.4:
                 self.result = txt_res5
 
+            else:
+                self.result = "К сожелению такой возраст не обрабатывается..."
+                
 # настройка окна
     def set_appear(self):
         self.setWindowTitle(txt_title)
         self.resize(win_width, win_height)
         self.move(win_x, win_y)
         self.setStyleSheet('background-color: #190c29;')
-
+        
+# Виджеты и направляющии
     def initUI(self):
         self.text_work = QLabel(txt_workheart + self.result)
         self.text_work.setStyleSheet(
@@ -67,8 +89,13 @@ class FinalWin(QWidget):
                 'font-size: 15px'
         )
 
-        self.text_index = QLabel(txt_index + self.index)
+        self.text_index = QLabel(txt_index + str(self.index))
         self.text_index.setStyleSheet(
                 'color: white;'
                 'font-size: 15px'
         )
+
+    # установка на левую направляющую
+        self.L1 = QVBoxLayout()
+        self.L1.addWidget(self.text_work, alignment = Qt.AlignCenter)
+        self.L1.addWidget(self.text_index, alignment = Qt.AlignCenter)
