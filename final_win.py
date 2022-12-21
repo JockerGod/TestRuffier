@@ -27,31 +27,31 @@ class FinalWin(QWidget):
             elif self.index <= 0.4:
                 self.result = txt_res5
         elif exp.age <= 14 and >= 13:
-            if self.index >= 16.5:
-                self.result = txt_res1
-            elif self.index <=16.4 and >=12.5:
-                self.result = txt_res2
-            elif self.index <=12.4 and >=7.5:
-                self.result = txt_res3
-            elif self.index <=7.4 and >=2:
-                self.result = txt_res4
-            elif self.index <= 1.9:
-                self.result = txt_res5
+            pass
         elif exp.age <= 12 and >= 11:
-            if self.index >= 18:
-                self.result = txt_res1
-            elif self.index <=17.9 and >=14:
-                self.result = txt_res2
-            elif self.index <=13.9 and >=9:
-                self.result = txt_res3
-            elif self.index <=8.9 and >=3.5:
-                self.result = txt_res4
-            elif self.index <= 3.4:
-                self.result = txt_res5
+            pass
         elif exp.age <= 10 and >= 9:
-            pass
+            if self.index >= 19.5:
+                self.result = txt_res1
+            elif self.index <=19.4 and >=15.5:
+                self.result = txt_res2
+            elif self.index <=15.4 and >=10.5:
+                self.result = txt_res3
+            elif self.index <=10.4 and >=5:
+                self.result = txt_res4
+            elif self.index <= 6.4:
+                self.result = txt_res5
         elif exp.age <= 8 and >= 7:
-            pass
+            if self.index >= 21:
+                self.result = txt_res1
+            elif self.index <=20 and >=17:
+                self.result = txt_res2
+            elif self.index <=16.9 and >=12:
+                self.result = txt_res3
+            elif self.index <=11.9 and >=6.5:
+                self.result = txt_res4
+            elif self.index <= 6.4:
+                self.result = txt_res5
 
 # настройка окна
     def set_appear(self):
